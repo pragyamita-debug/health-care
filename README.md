@@ -109,5 +109,8 @@ src/
   styles/global.css       colour tokens, type, buttons
 ```
 
+The doctor wears a surgical face mask so her face isn't shown; it was drawn onto the photo with
+`scripts/add-face-mask.py`.
+
 The photos in `src/assets/photos/` were cut from the design mock-up (with its printed text removed),
 so they are fairly small. Swap in higher-resolution versions with the same file names for a sharper page.
