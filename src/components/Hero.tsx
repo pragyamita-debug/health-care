@@ -46,14 +46,7 @@ function PanelRow({ icon, label, value, suffix = '', run, delay }: { icon: IconN
   );
 }
 
-interface Props {
-  resume: Resume;
-  onDownloadCv: () => void;
-  isExample?: boolean;
-  onUpload?: () => void;
-}
-
-export function Hero({ resume, onDownloadCv, isExample = false, onUpload }: Props) {
+export function Hero({ resume }: { resume: Resume }) {
   const ref = useRef<HTMLElement>(null);
   const [panelRef, panelIn] = useInView<HTMLDivElement>(0.3);
   const { stats } = resume;
@@ -77,13 +70,6 @@ export function Hero({ resume, onDownloadCv, isExample = false, onUpload }: Prop
     <section id="home" className="hero" ref={ref} onPointerMove={onPointerMove} aria-label="Introduction">
       <div className="wrap hero__grid">
         <div className="hero__copy">
-          {isExample && (
-            <button className="hero__example" onClick={onUpload}>
-              <span className="hero__example-dot" aria-hidden />
-              Example dashboard — upload a CV to make it yours
-              <Icon name="arrowUpRight" size={13} />
-            </button>
-          )}
 
           <p className="label hero__eyebrow">{focus || resume.location || 'Portfolio'}</p>
 
@@ -116,15 +102,9 @@ export function Hero({ resume, onDownloadCv, isExample = false, onUpload }: Prop
             <a className="pill" href="#experience">
               View Experience <Icon name="arrowRight" size={15} />
             </a>
-            {isExample ? (
-              <button className="pill pill--ghost" onClick={onUpload}>
-                <Icon name="upload" size={15} /> Upload your CV
-              </button>
-            ) : (
-              <button className="pill pill--ghost" onClick={onDownloadCv}>
-                <Icon name="download" size={15} /> Download CV
-              </button>
-            )}
+            <a className="pill pill--ghost" href={resume.email ? `mailto:${resume.email}` : '#contact'}>
+              <Icon name="mail" size={15} /> Contact
+            </a>
           </div>
         </div>
 

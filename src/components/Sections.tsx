@@ -60,7 +60,7 @@ export function StatStrip({ resume }: { resume: Resume }) {
 
 /* ================= about + skills ================= */
 
-export function ProfileSection({ resume, onDownloadCv }: { resume: Resume; onDownloadCv: () => void }) {
+export function ProfileSection({ resume }: { resume: Resume }) {
   return (
     <section id="profile" className="section" aria-labelledby="profile-title">
       <div className="wrap about">
@@ -73,9 +73,11 @@ export function ProfileSection({ resume, onDownloadCv }: { resume: Resume; onDow
           </h2>
           <span className="hero__bar" aria-hidden />
           <p className="about__summary">{resume.summary || resume.tagline}</p>
-          <button className="pill pill--ghost" onClick={onDownloadCv}>
-            <Icon name="download" size={15} /> Download CV
-          </button>
+          {resume.cvUrl && (
+            <a className="pill pill--ghost" href={resume.cvUrl} download>
+              <Icon name="download" size={15} /> Download CV
+            </a>
+          )}
         </Reveal>
 
         <GlowCard className="skills" accent="blue" speed={10} tilt={false}>
@@ -156,7 +158,7 @@ export function ExperienceSection({ resume }: { resume: Resume }) {
                 </Reveal>
               ))
             ) : (
-              <li className="empty">No experience section was found in the CV.</li>
+              <li className="empty">Add roles to src/data/profile.ts to show them here.</li>
             )}
           </ol>
 
@@ -227,7 +229,7 @@ export function Footer({ resume }: { resume: Resume }) {
           <i />
         </span>
         <span>
-          © {new Date().getFullYear()} {resume.name}. Generated from a CV.
+          © {new Date().getFullYear()} {resume.name}
         </span>
         <nav className="footer__links" aria-label="Profiles">
           {resume.links.linkedin && (

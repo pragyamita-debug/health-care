@@ -11,8 +11,8 @@ export interface Experience {
   location?: string;
   /** Human-readable period, e.g. "Jan 2024 – Present" */
   period?: string;
-  current: boolean;
-  months: number;
+  /** the current role gets the "now" style on its dates */
+  current?: boolean;
   bullets: string[];
 }
 
@@ -23,7 +23,6 @@ export interface Education {
   field?: string;
   institution?: string;
   year?: string;
-  rank: number;
 }
 
 export interface Project {
@@ -56,21 +55,16 @@ export interface Resume {
   certifications: string[];
   goals: Goal[];
   interests: string[];
-  languages: string[];
   motto?: string;
+  /** link for the "Download CV" button — put the file in /public, e.g. `${import.meta.env.BASE_URL}cv.pdf` */
+  cvUrl?: string;
   stats: {
     years: number;
-    /** true when the figure should be shown with a trailing "+" */
-    yearsPlus: boolean;
+    /** show "+" after the number */
+    yearsPlus?: boolean;
     projects: number;
-    projectsPlus: boolean;
+    projectsPlus?: boolean;
     skills: number;
   };
 }
 
-export interface StoredProfile {
-  resume: Resume;
-  photo?: string;
-  file?: { name: string; type: string; dataUrl: string };
-  updatedAt: number;
-}

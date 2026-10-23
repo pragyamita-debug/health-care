@@ -59,39 +59,8 @@
 .nav__links a.is-active::after { transform: scaleX(1); }
 
 .nav__end { display: flex; align-items: center; gap: 12px; }
-.nav__pop { position: relative; }
 .nav .nav__burger { display: none; }
 
-.popover {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 10px);
-  z-index: 40;
-  width: 220px;
-  margin: 0;
-  padding: 6px;
-  list-style: none;
-  border: 1px solid var(--line-strong);
-  border-radius: 12px;
-  background: var(--menu-bg);
-  box-shadow: 0 30px 60px -20px var(--shadow);
-  animation: pop-in 0.25s var(--ease-out);
-}
-@keyframes pop-in { from { opacity: 0; transform: translateY(-6px); } }
-.popover button {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 9px 10px;
-  border: 0;
-  border-radius: 8px;
-  background: none;
-  text-align: left;
-  font-size: 13.5px;
-  color: var(--text-2);
-}
-.popover button:hover { background: var(--hover-tint); color: var(--text); }
 
 /* ================= sections ================= */
 

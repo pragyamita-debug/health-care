@@ -1,10 +1,11 @@
 import type { Resume } from '../lib/types';
 
 /**
- * What the page shows before anyone uploads a CV: the full design, filled with
- * neutral placeholder text. Uploading a CV replaces every field below.
+ * Everything the dashboard shows comes from this object.
+ * Replace the placeholder values with real ones and the page updates —
+ * no other file needs to change.
  */
-export const placeholder: Resume = {
+export const profile: Resume = {
   name: 'Your Name',
   headline: 'Your Role | Your Specialty',
   tagline: 'One sentence about the work you do and the impact you want it to have.',
@@ -15,7 +16,7 @@ export const placeholder: Resume = {
     github: 'https://github.com/',
   },
   summary:
-    'Two or three sentences about who you are, the problems you like to work on and what you are looking for next. Upload a CV and this is replaced by the profile section.',
+    'Two or three sentences about who you are, the problems you like to work on and what you are looking for next.',
   motto: 'Better care. Stronger practices.',
 
   experience: [
@@ -24,7 +25,6 @@ export const placeholder: Resume = {
       company: 'Company Name',
       period: '2023 – Present',
       current: true,
-      months: 0,
       bullets: ['What you are responsible for.', 'A result you are proud of.'],
     },
     {
@@ -32,12 +32,11 @@ export const placeholder: Resume = {
       company: 'Company Name',
       period: '2020 – 2023',
       current: false,
-      months: 0,
       bullets: ['What you delivered there.'],
     },
   ],
 
-  education: [{ degree: 'Your Degree in Your Subject', short: 'M.Sc.', field: 'Your Subject', institution: 'Your University', year: '2020', rank: 4 }],
+  education: [{ degree: 'Your Degree in Your Subject', short: 'M.Sc.', field: 'Your Subject', institution: 'Your University', year: '2020' }],
 
   skills: ['Skill One', 'Skill Two', 'Skill Three', 'Skill Four', 'Skill Five', 'Skill Six', 'Skill Seven', 'Skill Eight'],
 
@@ -58,7 +57,6 @@ export const placeholder: Resume = {
   ],
 
   interests: ['Interest One', 'Interest Two'],
-  languages: [],
 
   stats: { years: 5, yearsPlus: true, projects: 12, projectsPlus: true, skills: 8 },
 };
