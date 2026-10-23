@@ -1,0 +1,271 @@
+/* Theme: studio black, brushed silver, glass — with a single warm orange accent */
+:root {
+  color-scheme: dark;
+
+  --bg: #061631;
+  --bg-2: #0a2147;
+  --surface: rgba(120, 190, 255, 0.05);
+  --surface-2: rgba(120, 190, 255, 0.09);
+  --line: rgba(140, 200, 255, 0.14);
+  --line-strong: rgba(140, 200, 255, 0.28);
+
+  --text: #f4f8ff;
+  --text-2: #c3d3ea;
+  --muted: #8ea5c6;
+  --dim: #6b83a6;
+
+  --silver: #e6eefb;
+  --accent: #22c7f5; /* the cyan in "Healthcare" */
+  --accent-2: #1597d6;
+  --accent-soft: #8fe3ff;
+  --warm: #ffcf8a;
+
+  /* GlowCard light colours */
+  --green: #6fe0ff;
+  --blue: #5fb4ff;
+  --teal: #4fe3d0;
+  --purple: #a9b8ff;
+  --amber: #ffcf8a;
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --nav: 76px;
+  --page: 1240px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --font: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav) + 8px);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 600px at 85% 0%, rgba(34, 199, 245, 0.10), transparent 60%),
+    radial-gradient(800px 600px at 0% 60%, rgba(21, 151, 214, 0.10), transparent 60%),
+    linear-gradient(180deg, #071a3a, var(--bg) 40%, #051229);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, p { margin: 0; }
+h1, h2 { text-wrap: balance; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+img { display: block; max-width: 100%; }
+::selection { background: rgba(34, 199, 245, 0.35); }
+
+:focus-visible {
+  outline: 1.5px solid var(--silver);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- type ---------- */
+
+/* small, wide-tracked uppercase labels used all over the design */
+.label {
+  display: block;
+  color: var(--text-2);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+.label--bright { color: var(--text-2); }
+
+.display {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+.display .accent { color: var(--accent); }
+.display .light { font-weight: 400; letter-spacing: -0.02em; }
+
+.title {
+  font-size: clamp(30px, 3.4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+}
+
+/* ---------- controls ---------- */
+
+.pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: linear-gradient(180deg, #3fd3fb, var(--accent-2));
+  color: #04203a;
+  font-size: 14px;
+  font-weight: 700;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s, background 0.3s;
+}
+.pill svg { transition: transform 0.3s var(--ease-out); }
+.pill:hover { box-shadow: 0 0 0 4px rgba(34, 199, 245, 0.15), 0 14px 32px -10px rgba(34, 199, 245, 0.7); }
+.pill:hover svg { transform: translate(2px, -2px); }
+.pill:active { transform: scale(0.97); }
+.pill--sm { height: 36px; padding: 0 16px; font-size: 13px; }
+.pill--ghost { background: rgba(6, 22, 49, 0.4); color: var(--text); border-color: var(--line-strong); }
+.pill--ghost:hover { background: rgba(255, 255, 255, 0.06); box-shadow: none; }
+
+/* light sweeping across the solid pill */
+.pill:not(.pill--ghost)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.6) 50%, transparent 65%);
+  transform: translateX(-130%);
+  animation: sheen 5s var(--ease-out) infinite;
+}
+@keyframes sheen {
+  0%, 60% { transform: translateX(-130%); }
+  100% { transform: translateX(130%); }
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text);
+}
+.text-link svg { transition: transform 0.3s var(--ease-out); }
+.text-link:hover svg { transform: translate(2px, -2px); }
+
+.round {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  color: var(--text-2);
+  transition: border-color 0.3s, color 0.3s, transform 0.3s var(--ease-out), background 0.3s;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.icon-btn:hover { background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.35); }
+.icon-btn:active { transform: scale(0.94); }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 12.5px;
+  color: var(--text-2);
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+}
+.chip:hover { border-color: rgba(255, 255, 255, 0.4); color: var(--text); background: rgba(255, 255, 255, 0.04); }
+
+.empty {
+  padding: 22px;
+  border: 1px dashed var(--line-strong);
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+}
+
+/* corner ticks on the cards, like the frames in the design */
+.ticks { position: relative; }
+.ticks::before,
+.ticks::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: rgba(143, 227, 255, 0.55);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 2;
+}
+.ticks::before { top: 8px; right: 8px; border-width: 1px 1px 0 0; }
+.ticks::after { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; }
+
+/* ---------- motion ---------- */
+
+.reveal {
+  opacity: 0;
+  translate: 0 22px;
+  transition: opacity 0.9s var(--ease-out), translate 0.9s var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+.reveal.is-in { opacity: 1; translate: 0 0; }
+
+/* silver light sweeping across a heading */
+.shimmer {
+  background: linear-gradient(100deg, currentColor 0%, currentColor 40%, #ffffff 47%, #c8f3ff 52%, currentColor 60%, currentColor 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 7s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  55%, 100% { background-position: 0% 0; }
+}
+
+@keyframes float { 50% { transform: translateY(-6px); } }
+
+.is-flash { animation: flash 1.4s var(--ease-out); }
+@keyframes flash {
+  0%, 40% { box-shadow: 0 0 0 1px rgba(34, 199, 245, 0.7), 0 0 40px rgba(34, 199, 245, 0.25); }
+  100% { box-shadow: 0 0 0 1px transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; translate: none; transition: none; }
+  .shimmer, .pill::after { animation: none; }
+}

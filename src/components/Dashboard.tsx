@@ -1,0 +1,48 @@
+import { useScrollSpy } from '../hooks/useScrollSpy';
+import type { StoredProfile } from '../lib/types';
+import { Hero } from './Hero';
+import { NAV, NavBar } from './NavBar';
+import { ExperienceSection, Footer, ProfileSection, StatStrip, SunriseSection } from './Sections';
+import './Dashboard.css';
+
+const IDS = NAV.map((n) => n.id);
+
+interface Props {
+  profile: StoredProfile;
+  /** true while the page shows the placeholder profile (no CV uploaded yet) */
+  isExample?: boolean;
+  onUploadNew: () => void;
+  onEdit: () => void;
+  onReset: () => void;
+  onDownloadCv: () => void;
+}
+
+export function Dashboard({ profile, isExample = false, onUploadNew, onEdit, onReset, onDownloadCv }: Props) {
+  const { resume } = profile;
+  const active = useScrollSpy(IDS, 160);
+
+  return (
+    <>
+      <NavBar
+        name={resume.name}
+        headline={resume.headline}
+        skills={resume.skills}
+        email={resume.email}
+        active={active}
+        isExample={isExample}
+        onUploadNew={onUploadNew}
+        onEdit={onEdit}
+        onDownloadCv={onDownloadCv}
+        onReset={onReset}
+      />
+      <main>
+        <Hero resume={resume} onDownloadCv={onDownloadCv} isExample={isExample} onUpload={onUploadNew} />
+        <StatStrip resume={resume} />
+        <ProfileSection resume={resume} onDownloadCv={onDownloadCv} />
+        <ExperienceSection resume={resume} />
+        <SunriseSection resume={resume} />
+      </main>
+      <Footer resume={resume} />
+    </>
+  );
+}
