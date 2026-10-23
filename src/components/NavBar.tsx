@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from './Icon';
+import { ThemeToggle } from './ThemeToggle';
 
 export const NAV = [
   { id: 'home', label: 'Home' },
@@ -82,6 +83,7 @@ export function NavBar({ name, headline, skills, email, active, isExample = fals
         </nav>
 
         <div className="nav__end">
+          <ThemeToggle />
           <div className="nav__pop">
             <button className="icon-btn" aria-label="Manage dashboard" aria-expanded={menu} onClick={() => setMenu((m) => !m)}>
               <Icon name="cog" size={16} />

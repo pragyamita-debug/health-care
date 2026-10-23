@@ -241,7 +241,7 @@
 .holo__skills { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0 0; padding: 0; list-style: none; }
 .holo__skills li { padding: 3px 7px; border-radius: 999px; background: rgba(143, 227, 255, 0.16); color: #dff6ff; font-size: clamp(8px, 0.75vw, 11px); white-space: nowrap; }
 .holo__next { margin-top: 8px; padding: 6px 8px; border: 1px solid rgba(143, 227, 255, 0.3); border-radius: 7px; background: rgba(6, 40, 90, 0.35); font-size: clamp(9px, 0.85vw, 12px); color: #dff6ff; }
-.holo__next span { display: block; font-size: 0.8em; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-soft); }
+.holo__next span { display: block; font-size: 0.8em; letter-spacing: 0.14em; text-transform: uppercase; color: #8fe3ff; }
 .holo__next b { display: block; margin-top: 2px; font-weight: 700; }
 .panel-row {
   display: grid;
@@ -257,7 +257,7 @@
 }
 .panel-row__icon { color: #8fe3ff; display: grid; }
 .panel-row__value { font-size: 1.15em; font-weight: 800; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.panel-row__value i { font-style: normal; font-weight: 600; font-size: 0.8em; color: var(--accent-soft); opacity: 0; transition: opacity 0.4s; }
+.panel-row__value i { font-style: normal; font-weight: 600; font-size: 0.8em; color: #8fe3ff; opacity: 0; transition: opacity 0.4s; }
 .panel-row__value i.is-on { opacity: 1; }
 
 .holo__charts { display: grid; grid-template-columns: 1.3fr 1fr auto; gap: 8px; align-items: end; margin-top: 8px; height: 38px; flex: none; }

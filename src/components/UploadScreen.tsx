@@ -3,6 +3,7 @@ import { ACCEPTED } from '../lib/extractText';
 import { GlowCard } from './GlowCard';
 import { Icon } from './Icon';
 import heroPhoto from '../assets/photos/doctor.jpg';
+import { ThemeToggle } from './ThemeToggle';
 import './UploadScreen.css';
 
 export const PROCESS_STEPS = ['Reading your file', 'Finding the sections', 'Counting experience & skills', 'Building your dashboard'];
@@ -36,11 +37,14 @@ export function UploadScreen({ busy, step, error, onFile, onSample, onDownloadSa
 
       <header className="upload__top">
         <span className="upload__brand"><span className="brand-mark" aria-hidden><i /><i /><i /></span><span className="wordmark">CV Dashboard</span></span>
+        <span className="upload__end">
+        <ThemeToggle />
         {onCancel && !busy && (
           <button className="pill pill--ghost pill--sm" onClick={onCancel}>
             <Icon name="arrowLeft" size={16} /> Back to dashboard
           </button>
         )}
+        </span>
       </header>
 
       <main className="upload__main">

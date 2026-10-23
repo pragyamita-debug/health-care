@@ -5,6 +5,9 @@ healthcare style: deep navy and bright cyan, heavy white headlines, glass panels
 working on a tablet beside a floating "Profile Overview" screen, and a sunrise sign-off
 “for a healthier tomorrow”.
 
+Comes in a **light** and a **dark** theme. It follows the visitor's device setting until they press
+the sun / moon button in the top bar; their pick is then remembered.
+
 Everything runs in the browser. The CV is read client-side and never sent to a server.
 
 **Live site:** https://pragyamita-debug.github.io/health-care/ (after Pages is switched on — see below)
@@ -26,13 +29,25 @@ Everything runs in the browser. The CV is read client-side and never sent to a s
 
 | Section | Built from |
 | --- | --- |
-| Top bar | rising-bars mark, name, top three skills, section links, **Upload CV** / **Get in touch** |
+| Top bar | rising-bars mark, name, top three skills, section links, light/dark switch, **Upload CV** / **Get in touch** |
 | Hero | first name (white) / last name (cyan) / role, a highlighted summary line, up to five projects with icon tiles |
 | Photo | doctor with a tablet; the motto is written on the window glass; a glass **Profile Overview** screen floats where the hologram is — experience counting up, projects, skills, degree, top skills, a heartbeat line and the next step |
 | Stat cards | years of experience, projects, skills, highest degree — all counting / decoding |
 | About | summary, all skills, interests |
 | Experience | timeline of roles (the highlight walks from role to role) and credentials stacked like books on a desk |
 | Sign-off | the next goal “for a healthier tomorrow” over a rising sun |
+
+## Light and dark themes
+
+- All colours are CSS variables at the top of `src/styles/global.css`. The first `:root` block is the
+  dark palette; the light palette is written twice below it (once for `prefers-color-scheme: light`,
+  once for `[data-theme='light']`) — keep those two blocks identical when you change a colour.
+- `src/components/ThemeToggle.tsx` switches the theme by setting `data-theme` on `<html>`;
+  `src/lib/theme.ts` remembers the choice in `localStorage`.
+- A tiny script in `index.html` applies the saved theme before the page draws, so it never flashes
+  the wrong colours.
+- The glass “Profile Overview” screen and the window text sit on the photo, so they keep the same
+  colours in both themes.
 
 ## Animations
 
@@ -82,12 +97,14 @@ src/
     parseResume.ts        text → Resume (+ parseResume.test.ts)
     dates.ts              date ranges and overlap-aware experience totals
     storage.ts            safe localStorage wrapper
+    theme.ts              read / apply / remember the theme
   hooks/                  useCountUp, useScramble, useInView, usePointerGlow, useScrollSpy
   components/
     UploadScreen.tsx      drop zone + reading progress
     ReviewDialog.tsx      check and fix the parsed fields
     NavBar.tsx, Hero.tsx, Sections.tsx, Dashboard.tsx
     GlowCard.tsx          the moving-border card
+    ThemeToggle.tsx       sun / moon light-dark switch
   assets/photos/          doctor photo and blurred clinic backdrop
   styles/global.css       colour tokens, type, buttons
 ```

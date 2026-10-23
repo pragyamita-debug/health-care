@@ -20,6 +20,27 @@
   --accent-soft: #8fe3ff;
   --warm: #ffcf8a;
 
+  /* surfaces (theme-dependent) */
+  --page-grad-top: #071a3a;
+  --page-grad-bottom: #051229;
+  --glow-1: rgba(34, 199, 245, 0.10);
+  --glow-2: rgba(21, 151, 214, 0.10);
+  --nav-bg: rgba(6, 22, 49, 0.85);
+  --menu-bg: rgba(8, 30, 66, 0.97);
+  --card-1: rgba(90, 170, 255, 0.10);
+  --card-2: rgba(20, 60, 120, 0.12);
+  --ghost-bg: rgba(6, 22, 49, 0.4);
+  --hover-tint: rgba(255, 255, 255, 0.07);
+  --dialog-1: #0b2147;
+  --dialog-2: #061631;
+  --input-bg: rgba(3, 12, 30, 0.55);
+  --scrim: rgba(2, 8, 20, 0.7);
+  --shadow: rgba(0, 0, 0, 0.8);
+  --veil: rgba(6, 22, 49, 0.45);
+  --sun-blend: screen;
+  --on-accent: #04203a;
+  --title-accent: var(--accent);
+
   /* GlowCard light colours */
   --green: #6fe0ff;
   --blue: #5fb4ff;
@@ -36,6 +57,102 @@
   --font: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
+/* Light palette: used when the visitor's device prefers light (and they haven't picked dark),
+   or when they pick light with the toggle. Keep both blocks identical. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+  color-scheme: light;
+
+  --bg: #f2f7fd;
+  --bg-2: #e6f0fb;
+  --surface: rgba(10, 80, 160, 0.04);
+  --surface-2: rgba(10, 80, 160, 0.07);
+  --line: rgba(14, 70, 140, 0.13);
+  --line-strong: rgba(14, 70, 140, 0.24);
+
+  --text: #0b2447;
+  --text-2: #36506f;
+  --muted: #637b99;
+  --dim: #8297b2;
+
+  --accent: #0aa3d8;
+  --accent-2: #0b7fc0;
+  --accent-soft: #0b7fc0;
+
+  --green: #0aa3d8;
+  --blue: #2f7fe0;
+  --teal: #12b3a4;
+  --purple: #5b6be0;
+  --amber: #e89a2c;
+
+  --page-grad-top: #e9f3fe;
+  --page-grad-bottom: #f6f9fd;
+  --glow-1: rgba(34, 199, 245, 0.16);
+  --glow-2: rgba(80, 160, 255, 0.12);
+  --nav-bg: rgba(246, 250, 255, 0.85);
+  --menu-bg: rgba(255, 255, 255, 0.98);
+  --card-1: rgba(255, 255, 255, 0.85);
+  --card-2: rgba(240, 247, 255, 0.75);
+  --ghost-bg: rgba(255, 255, 255, 0.6);
+  --hover-tint: rgba(10, 80, 160, 0.06);
+  --dialog-1: #ffffff;
+  --dialog-2: #f1f7fe;
+  --input-bg: #ffffff;
+  --scrim: rgba(10, 30, 60, 0.35);
+  --shadow: rgba(20, 50, 90, 0.18);
+  --veil: rgba(242, 247, 253, 0.55);
+  --sun-blend: normal;
+  --on-accent: #ffffff;
+  --title-accent: #0a8fc4;
+  }
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f2f7fd;
+  --bg-2: #e6f0fb;
+  --surface: rgba(10, 80, 160, 0.04);
+  --surface-2: rgba(10, 80, 160, 0.07);
+  --line: rgba(14, 70, 140, 0.13);
+  --line-strong: rgba(14, 70, 140, 0.24);
+
+  --text: #0b2447;
+  --text-2: #36506f;
+  --muted: #637b99;
+  --dim: #8297b2;
+
+  --accent: #0aa3d8;
+  --accent-2: #0b7fc0;
+  --accent-soft: #0b7fc0;
+
+  --green: #0aa3d8;
+  --blue: #2f7fe0;
+  --teal: #12b3a4;
+  --purple: #5b6be0;
+  --amber: #e89a2c;
+
+  --page-grad-top: #e9f3fe;
+  --page-grad-bottom: #f6f9fd;
+  --glow-1: rgba(34, 199, 245, 0.16);
+  --glow-2: rgba(80, 160, 255, 0.12);
+  --nav-bg: rgba(246, 250, 255, 0.85);
+  --menu-bg: rgba(255, 255, 255, 0.98);
+  --card-1: rgba(255, 255, 255, 0.85);
+  --card-2: rgba(240, 247, 255, 0.75);
+  --ghost-bg: rgba(255, 255, 255, 0.6);
+  --hover-tint: rgba(10, 80, 160, 0.06);
+  --dialog-1: #ffffff;
+  --dialog-2: #f1f7fe;
+  --input-bg: #ffffff;
+  --scrim: rgba(10, 30, 60, 0.35);
+  --shadow: rgba(20, 50, 90, 0.18);
+  --veil: rgba(242, 247, 253, 0.55);
+  --sun-blend: normal;
+  --on-accent: #ffffff;
+  --title-accent: #0a8fc4;
+}
+:root[data-theme='dark'] { color-scheme: dark; }
+
 *,
 *::before,
 *::after {
@@ -51,9 +168,10 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(900px 600px at 85% 0%, rgba(34, 199, 245, 0.10), transparent 60%),
-    radial-gradient(800px 600px at 0% 60%, rgba(21, 151, 214, 0.10), transparent 60%),
-    linear-gradient(180deg, #071a3a, var(--bg) 40%, #051229);
+    radial-gradient(900px 600px at 85% 0%, var(--glow-1), transparent 60%),
+    radial-gradient(800px 600px at 0% 60%, var(--glow-2), transparent 60%),
+    linear-gradient(180deg, var(--page-grad-top), var(--bg) 40%, var(--page-grad-bottom));
+  transition: background-color 0.4s, color 0.4s;
   color: var(--text);
   font-family: var(--font);
   font-size: 15px;
@@ -110,7 +228,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: -0.03em;
   line-height: 1.02;
 }
-.display .accent { color: var(--accent); }
+.display .accent { color: var(--title-accent); }
 .display .light { font-weight: 400; letter-spacing: -0.02em; }
 
 .title {
@@ -132,7 +250,7 @@ img { display: block; max-width: 100%; }
   border-radius: 999px;
   border: 1px solid transparent;
   background: linear-gradient(180deg, #3fd3fb, var(--accent-2));
-  color: #04203a;
+  color: var(--on-accent);
   font-size: 14px;
   font-weight: 700;
   overflow: hidden;
@@ -144,8 +262,8 @@ img { display: block; max-width: 100%; }
 .pill:hover svg { transform: translate(2px, -2px); }
 .pill:active { transform: scale(0.97); }
 .pill--sm { height: 36px; padding: 0 16px; font-size: 13px; }
-.pill--ghost { background: rgba(6, 22, 49, 0.4); color: var(--text); border-color: var(--line-strong); }
-.pill--ghost:hover { background: rgba(255, 255, 255, 0.06); box-shadow: none; }
+.pill--ghost { background: var(--ghost-bg); color: var(--text); border-color: var(--line-strong); }
+.pill--ghost:hover { background: var(--hover-tint); box-shadow: none; }
 
 /* light sweeping across the solid pill */
 .pill:not(.pill--ghost)::after {
@@ -193,7 +311,7 @@ img { display: block; max-width: 100%; }
   background: transparent;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
 }
-.icon-btn:hover { background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.35); }
+.icon-btn:hover { background: var(--hover-tint); border-color: var(--accent); }
 .icon-btn:active { transform: scale(0.94); }
 
 .chip {
@@ -206,7 +324,7 @@ img { display: block; max-width: 100%; }
   color: var(--text-2);
   transition: border-color 0.25s, color 0.25s, background 0.25s;
 }
-.chip:hover { border-color: rgba(255, 255, 255, 0.4); color: var(--text); background: rgba(255, 255, 255, 0.04); }
+.chip:hover { border-color: var(--accent); color: var(--text); background: var(--hover-tint); }
 
 .empty {
   padding: 22px;
@@ -269,3 +387,13 @@ img { display: block; max-width: 100%; }
   .reveal { opacity: 1; translate: none; transition: none; }
   .shimmer, .pill::after { animation: none; }
 }
+
+/* ---------- theme toggle ---------- */
+
+.theme-toggle { position: relative; overflow: hidden; color: var(--text); }
+.theme-toggle__icon { position: absolute; inset: 0; display: grid; place-items: center; transition: transform 0.5s var(--ease-out), opacity 0.35s; }
+.theme-toggle[data-theme-state='dark'] .theme-toggle__sun { transform: translateY(0) rotate(0); opacity: 1; }
+.theme-toggle[data-theme-state='dark'] .theme-toggle__moon { transform: translateY(120%) rotate(-60deg); opacity: 0; }
+.theme-toggle[data-theme-state='light'] .theme-toggle__sun { transform: translateY(-120%) rotate(90deg); opacity: 0; }
+.theme-toggle[data-theme-state='light'] .theme-toggle__moon { transform: translateY(0) rotate(0); opacity: 1; }
+.theme-toggle:hover .theme-toggle__sun { color: var(--warm); }

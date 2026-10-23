@@ -23,6 +23,7 @@ const PATHS = {
   chart: 'M4 20V10m5 10V4m5 16v-7m5 7V8',
   stethoscope: 'M6 3v6a4 4 0 0 0 8 0V3M10 13v3a5 5 0 0 0 10 0v-2m0-3a2 2 0 1 0 0 .01',
   heart: 'M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z',
+  moon: 'M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z',
   arrowUpRight: 'M7 17 17 7M8 7h9v9',
   cpu: 'M8 8h8v8H8zM4 9h2m-2 6h2m12-6h2m-2 6h2M9 4v2m6-2v2M9 18v2m6-2v2M5 5h14v14H5z',
   arrowLeft: 'M19 12H5m5-5-5 5 5 5',
